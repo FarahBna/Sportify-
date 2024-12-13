@@ -10,16 +10,19 @@
     <div class="login-container">
         <div class="logo">SPORTIFY</div>
         <h1>Welcome back</h1>
-        <p>Don't have a SPORTIFY account? <a href="#"><br>Sign up for free</a></p>
+        <p>Don't have a SPORTIFY account? <a href="signUp.html">Sign up for free</a></p>
 
-        <button class="btn google-btn">
-            <img src="images/png-clipart-google-logo-google-search-google-now-google-text-trademark-thumbnail.png" alt="Google Logo" >
-            Log in with Google
-        </button>
-
-       
-
-        <button class="btn email-btn">Log in with Email</button>
+        <form>
+            <div class="input-box">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-box">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn submit-btn">Log in </button>
+        </form>
     </div>
 </body>
 </html>

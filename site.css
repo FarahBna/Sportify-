@@ -810,14 +810,13 @@ main h2 {
 /* End Training */
 
 /* Début login */
+/* Global styles */
 body.login_page {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   background-color: #1d252c;
-  /* Background color similar to the example */
   color: #fff;
-  /* Text color */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -827,21 +826,27 @@ body.login_page {
 /* Login container styles */
 .login-container {
   text-align: center;
-  max-width: 360px;
+  max-width: 400px;
   width: 100%;
-  padding: 20px;
+  padding: 30px;
   background-color: #2e3b47;
-  /* Slightly lighter container background */
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
 }
 
 /* Logo styling */
 .logo {
   font-size: 36px;
   font-weight: bold;
-  line-height: 1.2;
   margin-bottom: 20px;
+  color: #00aaff;
+  text-transform: uppercase;
 }
 
 /* Title styling */
@@ -858,56 +863,229 @@ p {
 
 p a {
   color: #00aaff;
-  /* Light blue color for links */
   text-decoration: none;
+  font-weight: bold;
 }
 
 p a:hover {
   text-decoration: underline;
 }
 
-/* Button styles */
-.btn {
+/* Input box styles */
+.input-box {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-box label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #cfd8e3;
+}
+
+.input-box input {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+  padding: 12px;
+  border: 1px solid #394452;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #394452;
+  color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-box input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+.input-box input:focus {
+  outline: none;
+  border-color: #00aaff;
+  box-shadow: 0 0 5px rgba(0, 170, 255, 0.8);
+}
+
+/* Submit button styles */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: #00aaff;
+  color: #fff;
+  font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.google-btn {
-  background-color: #fff;
-  color: #000;
+.submit-btn:hover {
+  background-color: #008fcc;
+  box-shadow: 0 4px 10px rgba(0, 170, 255, 0.5);
 }
 
-.apple-btn {
-  background-color: #000;
-  color: #fff;
+/* Add subtle animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.email-btn {
-  background-color: #2b6cb0;
-  color: #fff;
+.login-container {
+  animation: fadeIn 0.5s ease;
 }
 
-/* Icon styles */
-.btn img {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-/* Button hover effect */
-.btn:hover {
-  opacity: 0.9;
-}
 
 /* End login */
+
+
+
+
+/*Début sign up*/
+/* Global styles */
+body.signup_page {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #1d252c;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Signup container styles */
+.signup-container {
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  padding: 30px;
+  background-color: #2e3b47;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* Logo styling */
+.logo {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #00aaff;
+  text-transform: uppercase;
+}
+
+/* Title styling */
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+/* Paragraph and link styling */
+p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+p a {
+  color: #00aaff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+/* Input box styles */
+.input-box {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-box label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #cfd8e3;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #394452;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #394452;
+  color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-box input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+.input-box input:focus {
+  outline: none;
+  border-color: #00aaff;
+  box-shadow: 0 0 5px rgba(0, 170, 255, 0.8);
+}
+
+/* Submit button styles */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: #00aaff;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #008fcc;
+  box-shadow: 0 4px 10px rgba(0, 170, 255, 0.5);
+}
+
+/* Add subtle animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.signup-container {
+  animation: fadeIn 0.5s ease;
+}
+/*End signup*/
+
+
+
 footer {
   text-align: center;
   padding: 20px;
