@@ -1,0 +1,85 @@
+.NutritionSec {
+    height: 100vh; /* La section occupe toute la hauteur de la fenêtre */
+    background: url('images/smiling-couple-holding-avocado-apple-smoothies-hand.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+.NutritionSec::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Ajoute une superposition sombre pour améliorer la lisibilité */
+    z-index: 1;
+}
+
+.NutritionSec h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.NutritionSec p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    line-height: 1.5;
+    margin: 0 auto;
+}
+
+
+/* Nutrition Categories */
+.nutrition1-categories, .nutrition2-categories {
+  display: flex;
+  gap: 1rem; /* Ajoute un espace entre les colonnes */
+  margin-bottom: 1rem;
+}
+
+.category {
+  flex: 1;
+  height: 200px; /* La hauteur des blocs */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); /* Améliore la lisibilité du texte */
+  border-radius: 10px; /* Coins arrondis pour un design plus fluide */
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition pour un effet fluide */
+}
+
+.category h2 {
+  z-index: 1;
+}
+
+.category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Superposition sombre pour le texte */
+  z-index: 0;
+  transition: background 0.3s ease; /* Transition pour changer la couleur en hover */
+}
+
+/* Effet hover */
+.category:hover {
+  transform: scale(1.05); /* Agrandissement léger */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Ajout d'une ombre pour souligner */
+}
+
+.category:hover::before {
+  background: rgba(0, 0, 0, 0.6); /* Rendre la superposition plus sombre */
+}
