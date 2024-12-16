@@ -7,22 +7,91 @@
     <link rel="stylesheet" href="site.css">
 </head>
 <body class="login_page">
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics-compat.js"></script>
+
+    <script>
+      // Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBkJyIZTcqQSsqQJYNQ9Jz8ekKLxSmjKbA",
+        authDomain: "sportify-d7f38.firebaseapp.com",
+        projectId: "sportify-d7f38",
+        storageBucket: "sportify-d7f38.appspot.com",
+        messagingSenderId: "1093160001421",
+        appId: "1:1093160001421:web:7a498ceee08a8d394ee7c4",
+      };
+
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth(); // Initialize Firebase Authentication
+    </script>
+
     <div class="login-container">
         <div class="logo">SPORTIFY</div>
         <h1>Welcome back</h1>
         <p>Don't have a SPORTIFY account? <a href="signUp.html">Sign up for free</a></p>
 
-        <form>
-            <div class="input-box">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-            </div>
-            <div class="input-box">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            </div>
-            <button type="submit" class="btn submit-btn">Log in </button>
-        </form>
+        <form id="login-form">
+          <div class="input-box">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="input-box">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+          <a href="#" id="forgot-password" style="display: block; text-align: right; margin-bottom: 10px;">Forgot Password?</a>
+          <button type="submit" class="btn submit-btn">Log in</button>
+      </form>
+      
     </div>
+
+    <!-- Login Script -->
+    <script>
+      const loginForm = document.getElementById("login-form");
+      loginForm.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent form refresh
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        auth.signInWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            alert("Login successful!");
+            window.location.href = "site.html"; // Redirect to home page
+          })
+          .catch((error) => {
+            let errorMessage;
+            switch (error.code) {
+              case "auth/user-not-found":
+                errorMessage = "No account found with this email.";
+                break;
+              case "auth/wrong-password":
+                errorMessage = "Incorrect password. Please try again.";
+                break;
+              default:
+                errorMessage = "Login failed. Please check your details and try again.";
+            }
+            alert(errorMessage);
+          });
+      });
+      // Forgot Password
+document.getElementById("forgot-password").addEventListener("click", () => {
+    const email = document.getElementById("email").value;
+    if (!email) {
+        alert("Please enter your email address first.");
+        return;
+    }
+    auth.sendPasswordResetEmail(email)
+        .then(() => {
+            alert("Password reset link has been sent to your email.");
+        })
+        .catch((error) => {
+            alert("Error: " + error.message);
+        });
+});
+
+    </script>
 </body>
 </html>

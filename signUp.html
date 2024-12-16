@@ -12,7 +12,7 @@
         <h1>Create Your Account</h1>
         <p>Already have a SPORTIFY account? <a href="logIn.html">Log in here</a></p>
 
-        <form>
+        <form id="signup-form">
             <div class="input-box">
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter your full name" required>
@@ -32,5 +32,55 @@
             <button type="submit" class="btn submit-btn">Sign Up</button>
         </form>
     </div>
+
+    <!-- Firebase Initialization and Sign-Up Script -->
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBkJyIZTcqQSsqQJYNQ9Jz8ekKLxSmjKbA",
+            authDomain: "sportify-d7f38.firebaseapp.com",
+            projectId: "sportify-d7f38",
+            storageBucket: "sportify-d7f38.appspot.com",
+            messagingSenderId: "1093160001421",
+            appId: "1:1093160001421:web:7a498ceee08a8d394ee7c4",
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Initialize Firebase Authentication
+        const auth = getAuth(app);
+
+        // Sign-Up Form Logic
+        const signupForm = document.getElementById("signup-form");
+        signupForm.addEventListener("submit", (event) => {
+            event.preventDefault(); // Prevent form refresh
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const confirmPassword = document.getElementById("confirm-password").value.trim();
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    alert("Account created successfully!");
+                    console.log("User:", userCredential.user);
+                    // Redirect to login page or dashboard
+                    window.location.href = "logIn.html";
+                })
+                .catch((error) => {
+                    console.error(error);
+                    alert("Error: " + error.message);
+                });
+        });
+    </script>
 </body>
 </html>

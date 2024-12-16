@@ -7,186 +7,200 @@
     <link rel="stylesheet" href="site.css">
 </head>
 <body>
-    <header>
-      <nav class="navbar">
-        <div class="logo"><a href="site.html">SPORTIFY</a></div>
-        <button class="nav-toggle" onclick="toggleMenu()">☰</button>
-        <ul class="nav-links">
-          <li><a href="training.html">Training</a></li>
-          <li><a href="nutrition.html">Nutrition</a></li>
-          <li><a href="shop.html">Shop</a></li>
-        </ul>
-        <button class="login-btn"><a href="logIn.html">Login</a> <span class="arrow">&rarr;</span></button>
-      </nav>
-    </header>
+  <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBkJyIZTcqQSsqQJYNQ9Jz8ekKLxSmjKbA",
+      authDomain: "sportify-d7f38.firebaseapp.com",
+      projectId: "sportify-d7f38",
+      storageBucket: "sportify-d7f38.appspot.com",
+      messagingSenderId: "1093160001421",
+      appId: "1:1093160001421:web:7a498ceee08a8d394ee7c4",
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+  </script>
 
-    <section class="hero">
-        <video autoplay muted loop class="background-video">
-            <source src="fintess-video.mp4" type="video/mp4">
-        </video>
-        <div class="hero-content">
-            <h1>Supercharge Your Fitness. <br> Stay Consistent. <br> Get Results.</h1>
-            <p>Sportify, your ultimate sports guide for training, nutrition, and motivation to achieve all your fitness goals.</p>
-        </div>
-    </section>
+  <header>
+    <nav class="navbar">
+      <div class="logo"><a href="site.html">SPORTIFY</a></div>
+      <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links">
+        <li><a href="training.html">Training</a></li>
+        <li><a href="nutrition.html">Nutrition</a></li>
+        <li><a href="shop.html">Shop</a></li>
+      </ul>
+      <button class="login-btn" id="auth-btn"></button>
+    </nav>
+  </header>
 
-    <section class="features">
-        <h2 class="top-cards">Building a workout routine is hard...<br> <span>Make it easy with SPORTIFY</span></h2>
-        <div class="features-grid">
-            <div class="feature-card">Motivation<br><p>The same workout routine can bore you.</p></div>
-            <div class="feature-card">Personalization<br><p>The workout plan that fits you.</p></div>
-            <div class="feature-card">Consistency<br><p>Struggling with your training routine?</p></div>
-            <div class="feature-card">Results<br><p>Let technology help you progress.</p></div>
-            <div class="feature-card">Ability<br><p>Don’t know where to start?</p></div>
-            <div class="feature-card">Flexibility<br><p>Your program knows life is chaotic.</p></div>
-        </div>
-        <h2 class="bottom-cards">“The body achieves what the mind believes.” – <br>
-            Napoleon Hill</h2>
-    </section>
-    <section class="motivation">
-      <h2 class="title">
-          Dare to be you<br>
-          <span>No excuses, great results. Free Athletes prove it.</span>
-      </h2>
-      <div class="motivation-grid">
-          <div class="motivation-card">
-              <img src="images/before-1.png" alt="Before Image 1">
-              <p>Before Image 1</p>
-              <a href="https://example.com" target="_blank">Learn more</a>
-          </div>
-          <div class="motivation-card">
-              <img src="images/before-2.png" alt="Before Image 2">
-              <p>Before Image 2</p>
-              <a href="https://example.com" target="_blank">Learn more</a>
-          </div>
-          <div class="motivation-card">
-              <img src="images/before-3.png" alt="Before Image 3">
-              <p>Before Image 3</p>
-              <a href="https://example.com" target="_blank">Learn more</a>
-          </div>
-      </div>
+  <section class="hero">
+    <video autoplay muted loop class="background-video">
+      <source src="fintess-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <h1>Supercharge Your Fitness. <br> Stay Consistent. <br> Get Results.</h1>
+      <p>Sportify, your ultimate sports guide for training, nutrition, and motivation to achieve all your fitness goals.</p>
+    </div>
   </section>
-  
-    <section class="user-opinion">
-        <div class="testimonials">
-          <h2>What SPORTIFY users say <br> about Us</h2>
-          <div class="rating">4.6 ★★★★★</div>
-          
-      
-          <div class="testimonial-cards">
-            <div class="testimonial-card">
-              <div class="Short-desc">Great App!</div>
-              <p>“It makes you feel truly motivated to keep up a sporty and active lifestyle. The workouts are not only adaptable but also challenging, ensuring that you always push your limits and achieve progress. What makes it even more exciting is the ability to work out with friends, allowing you to track and celebrate each other's progression while staying committed together.”</p>
-              <div class="user-info">
-                <img src="images/mehdi.jpg" alt="Mehdi Chekir">
-                <span>Mehdi Chekir</span>
-              </div>
-            </div>
-            <div class="testimonial-card">
-              <div class="Short-desc">No more gym</div>
-              <p>“By far the best app for bodyweight workouts that I've ever used. Since the beginning of the pandemic, I decided to switch my entire training routine to SPORTIFY, and it has completely transformed how I stay fit. The app’s convenience and effectiveness have been so impressive that I no longer see myself needing to enter a gym again in the future.”</p>
-              <div class="user-info">
-                <img src="images/farah.jpg" alt="Farah Iben Abdallah">
-                <span>Farah Iben Abdallah</span>
-              </div>
-            </div>
-            <div class="testimonial-card">
-              <div class="Short-desc">SPORTIFY changed my life!</div>
-              <p>“A truly amazing website for training, losing weight, and building strength effectively. I’ve been consistently using it for the past 6 years, and it has never failed to deliver excellent results. The workouts are well-designed, and the overall experience is so good that I confidently recommend it to anyone looking to transform their fitness journey without any hesitation.”</p>
-              <div class="user-info">
-                <img src="images/ferdaoues.jpg" alt="Ferdaous Jaoued">
-                <span>Ferdaous Jaoued</span>
-              </div>
-            </div>
+
+  <section class="features">
+    <h2 class="top-cards">Building a workout routine is hard...<br> <span>Make it easy with SPORTIFY</span></h2>
+    <div class="features-grid">
+      <div class="feature-card">Motivation<br><p>The same workout routine can bore you.</p></div>
+      <div class="feature-card">Personalization<br><p>The workout plan that fits you.</p></div>
+      <div class="feature-card">Consistency<br><p>Struggling with your training routine?</p></div>
+      <div class="feature-card">Results<br><p>Let technology help you progress.</p></div>
+      <div class="feature-card">Ability<br><p>Don’t know where to start?</p></div>
+      <div class="feature-card">Flexibility<br><p>Your program knows life is chaotic.</p></div>
+    </div>
+    <h2 class="bottom-cards">“The body achieves what the mind believes.” – <br> Napoleon Hill</h2>
+  </section>
+
+  <section class="motivation">
+    <h2 class="title">
+      Dare to be you<br>
+      <span>No excuses, great results. Free Athletes prove it.</span>
+    </h2>
+    <div class="motivation-grid">
+      <div class="motivation-card">
+        <img src="images/before-1.png" alt="Before Image 1">
+        <p>Before Image 1</p>
+        <a href="https://example.com" target="_blank">Learn more</a>
+      </div>
+      <div class="motivation-card">
+        <img src="images/before-2.png" alt="Before Image 2">
+        <p>Before Image 2</p>
+        <a href="https://example.com" target="_blank">Learn more</a>
+      </div>
+      <div class="motivation-card">
+        <img src="images/before-3.png" alt="Before Image 3">
+        <p>Before Image 3</p>
+        <a href="https://example.com" target="_blank">Learn more</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="user-opinion">
+    <div class="testimonials">
+      <h2>What SPORTIFY users say <br> about Us</h2>
+      <div class="rating">4.6 ★★★★★</div>
+      <div class="testimonial-cards">
+        <div class="testimonial-card">
+          <div class="Short-desc">Great App!</div>
+          <p>“It makes you feel truly motivated to keep up a sporty and active lifestyle...</p>
+          <div class="user-info">
+            <img src="images/mehdi.jpg" alt="Mehdi Chekir">
+            <span>Mehdi Chekir</span>
           </div>
         </div>
-      </section>
-      <section class="product-highlight">
-        <div class="product-container">
-          <div class="product-image">
-            <img src="images/impact-proteine-premium-whey-removebg-preview.png" alt="Gold Standard WHEY Protein">
-          </div>
-          <div class="product-info">
-            <h2>Gold Standard WHEY Protein</h2>
-            <h3>Best Seller</h3>
-            <p>
-              Protein is essential for muscle repair, growth, and overall body function.
-              It aids recovery after exercise, keeps you full longer, and supports a healthy lifestyle.
-            </p>
-            <a href="#" class="buy-now-btn">Buy now →</a>
+        <div class="testimonial-card">
+          <div class="Short-desc">No more gym</div>
+          <p>“By far the best app for bodyweight workouts that I've ever used...</p>
+          <div class="user-info">
+            <img src="images/farah.jpg" alt="Farah Iben Abdallah">
+            <span>Farah Iben Abdallah</span>
           </div>
         </div>
-      </section>
-      
-      <script src="site.js"></script>
-      <footer class="footer">
-        <div class="footer-container">
-          <div class="footer-left">
-            <div class="footer-logo">
-              <h2>SPORTIFY</h2>
-              <p>NO PAIN NO GAIN</p>
-              <p>&copy; 2024 Sportify GmbH</p>
-            </div>
-            <div class="footer-app-links">
-              <a href="#"><img src="images/appstore-logo.png" alt="Download on the App Store"></a>
-              <a href="#"><img src="images/playstore-logo.png" alt="Get it on Google Play"></a>
-            </div>
-          </div>
-      
-          
-          <div class="footer-right">
-            <div class="footer-columns">
-              <div class="footer-column">
-                <h3>Products</h3>
-                <ul>
-                  <li><a href="#">Training</a></li>
-                  <li><a href="#">Nutrition</a></li>
-                  <li><a href="#">Shop</a></li>
-                </ul>
-              </div>
-              <div class="footer-column">
-                <h3>Company</h3>
-                <ul>
-                  <li><a href="#">Careers</a></li>
-                  <li><a href="#">Press</a></li>
-                  <li><a href="#">Ambassadors</a></li>
-                  <li><a href="#">Help & Support</a></li>
-                </ul>
-              </div>
-              <div class="footer-column">
-                <h3>Legal</h3>
-                <ul>
-                  <li><a href="#">Terms</a></li>
-                  <li><a href="#">Privacy & Cookies</a></li>
-                  <li><a href="#">Imprint</a></li>
-                </ul>
-              </div>
-              <div class="footer-column">
-                <h3>Social</h3>
-                <ul>
-                  <li><a href="#">Facebook</a></li>
-                  <li><a href="#">Instagram</a></li>
-                  <li><a href="#">YouTube</a></li>
-                  <li><a href="#">Twitter</a></li>
-                </ul>
-              </div>
-            </div>
+        <div class="testimonial-card">
+          <div class="Short-desc">SPORTIFY changed my life!</div>
+          <p>“A truly amazing website for training, losing weight, and building strength effectively...</p>
+          <div class="user-info">
+            <img src="images/ferdaoues.jpg" alt="Ferdaous Jaoued">
+            <span>Ferdaous Jaoued</span>
           </div>
         </div>
-      </footer>
-      
-      
-      
-</body>
-</html>
->
-              </div>
-            </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="product-highlight">
+    <div class="product-container">
+      <div class="product-image">
+        <img src="images/impact-proteine-premium-whey-removebg-preview.png" alt="Gold Standard WHEY Protein">
+      </div>
+      <div class="product-info">
+        <h2>Gold Standard WHEY Protein</h2>
+        <h3>Best Seller</h3>
+        <p>Protein is essential for muscle repair, growth, and overall body function...</p>
+        <a href="#" class="buy-now-btn">Buy now →</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="site.js"></script>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <h2>SPORTIFY</h2>
+          <p>NO PAIN NO GAIN</p>
+          <p>&copy; 2024 Sportify GmbH</p>
+        </div>
+        <div class="footer-app-links">
+          <a href="#"><img src="images/appstore-logo.png" alt="Download on the App Store"></a>
+          <a href="#"><img src="images/playstore-logo.png" alt="Get it on Google Play"></a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h3>Products</h3>
+            <ul>
+              <li><a href="#">Training</a></li>
+              <li><a href="#">Nutrition</a></li>
+              <li><a href="#">Shop</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Ambassadors</a></li>
+              <li><a href="#">Help & Support</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy & Cookies</a></li>
+              <li><a href="#">Imprint</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Social</h3>
+            <ul>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">YouTube</a></li>
+              <li><a href="#">Twitter</a></li>
+            </ul>
           </div>
         </div>
-      </footer>
-      
-      
-      
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    auth.onAuthStateChanged((user) => {
+      const authBtn = document.getElementById("auth-btn");
+      if (user) {
+        authBtn.textContent = "Log Out";
+        authBtn.onclick = () => firebase.auth().signOut();
+      } else {
+        authBtn.textContent = "Login";
+        authBtn.onclick = () => window.location.href = "login.html";
+      }
+    });
+
+    function toggleMenu() {
+      document.querySelector(".nav-links").classList.toggle("active");
+    }
+  </script>
+
 </body>
 </html>
