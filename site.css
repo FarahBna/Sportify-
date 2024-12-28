@@ -22,23 +22,26 @@ main h2 {
 
 
 .navbar {
-  
   position: fixed;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; /* Space out logo and links */
   align-items: center;
   background-color: #1a242f;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   width: 100%;
   top: 0;
   z-index: 1000;
-  height: auto;
+  height: 70px; /* Explicit height for proper spacing */
+  padding: 0 20px; /* Horizontal padding for better aesthetics */
+  box-sizing: border-box; /* Ensure padding doesn't add to the width */
 }
 
 .logo {
   font-size: 24px;
   font-weight: bold;
   color: #007bff;
+  margin: auto 0;
+  margin-top: 20px;
 }
 
 
@@ -47,10 +50,12 @@ main h2 {
   display: none;
   flex-direction: column;
   list-style: none;
-  
+  justify-content:flex-start;
   width: auto;
   background-color: #1a242f;
-  padding: 10px 0;
+  padding: 30px 0;
+  gap: 30px;
+  margin-right: 20% ;
 }
 
 
@@ -452,6 +457,7 @@ main h2 {
   color: #fff;
   text-align: center;
   margin-bottom: 10px;
+  width: 100%;
 }
 
 .NutritionSec::before {
@@ -547,57 +553,104 @@ main h2 {
 
 /* Début Breakfast */
 
+/* Title Styling */
+.titre h2 {
+  text-align: center;
+  font-size: 3rem; /* Larger font size for emphasis */
+  color: white;
+  margin-top: 2rem; /* Adjust top margin for better positioning */
+  margin-bottom: 1.5rem; /* Add spacing below the title */
+  text-transform: uppercase;
+}
+
+/* Grid container for the menu items */
 .menu-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Space between grid items */
+  padding: 20px; /* Add padding around the grid */
+  margin: 0 auto; /* Center grid container */
+  max-width: 1200px; /* Set a maximum width for the grid */
 }
 
-.calcook {
-  position: absolute;
-  bottom: 20px;
-  margin: 0 auto;
-}
-
+/* Menu item card */
 .menu-item {
-  position: relative;
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-color: #2c313a;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center content horizontally */
+  justify-content: flex-start; /* Align content at the top */
+  background-color: #2c313a; /* Card background */
+  padding: 20px; /* Add padding inside cards */
+  border-radius: 12px; /* Rounded corners */
+  text-align: center; /* Center text */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
 }
 
+/* Hover effect: slight lift and shadow */
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Image adjustments */
 .menu-item img {
-  width: 150px;
-  /* Réduit la largeur */
-  height: auto;
-  /* Garde les proportions */
+  width: 100%; /* Full width of the container */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure image fits nicely */
+  border-radius: 8px; /* Optional rounded corners */
+  margin-bottom: 15px; /* Space below image */
+  transition: transform 0.3s ease;
 }
 
+/* Image hover effect */
+.menu-item:hover img {
+  transform: scale(1.1);
+}
 
+/* Title styling */
 .menu-item h3 {
-  font-size: 18px;
-  margin: 10px 0;
+  font-size: 1.5rem; /* Larger titles */
+  color: #fff; /* White color for titles */
+  margin-bottom: 10px; /* Space below title */
 }
 
+/* Calories info styling */
 .menu-item .calories {
-  color: #3498db;
-  margin: 10px 0;
+  color: #3498db; /* Highlight color for calories */
+  font-size: 1.1rem; /* Slightly larger text */
+  font-weight: bold; /* Bold font */
+  margin: 10px 0; /* Space above and below */
 }
 
+/* Description text styling */
+.menu-item .description {
+  font-size: 1rem; /* Regular font size */
+  color: #dcdcdc; /* Light grey color */
+  margin-bottom: 15px; /* Space before the button */
+  line-height: 1.5; /* Better line spacing for readability */
+}
+
+/* Buttons styling */
 .menu-item button {
-  padding: 8px 15px;
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
+  padding: 10px 20px;
+  background-color: #3498db; /* Button color */
+  color: #fff; /* White text */
+  border: none; /* Remove borders */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1rem; /* Font size */
+  cursor: pointer; /* Pointer on hover */
+  margin-top: auto; /* Push button to the bottom */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-item button:hover {
+  background-color: #2980b9; /* Darker color on hover */
+  transform: translateY(-3px); /* Slight lift */
 }
 
 /* End Breakfast */
+
 
 /* Début Training  */
 .TrainingSec {

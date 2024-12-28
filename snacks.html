@@ -12,14 +12,14 @@
     <script type="module" src="./firebase-config.js"></script>
     <!-- Nutrition Data -->
     <script type="module">
-        import { fetchAllBreakfasts, renderItemGrid } from './nutrition.js';
+        import { fetchAllsnacks, renderItemGrid } from './nutrition.js';
         document.addEventListener("DOMContentLoaded", () => {
-            fetchAllBreakfasts()
+            fetchAllsnacks()
                 .then(items => {
                     renderItemGrid(items);
                 })
                 .catch(error => {
-                    console.error('Error fetching breakfast data:', error);
+                    console.error('Error fetching snacks data:', error);
                 });
         });
     </script>
@@ -41,10 +41,10 @@
 
     <!-- Main Content -->
     <main>
-        <h2 class="titre">BREAKFAST</h2>
+        <h2 class="titre">Healthy Snacks</h2>
         <!-- Menu Grid -->
         <div class="menu-container" id="menu-container">
-            <!-- Dynamic content from fetchAllBreakfasts will populate here -->
+            <!-- Dynamic content from fetchAllsnacks will populate here -->
         </div>
     </main>
 
