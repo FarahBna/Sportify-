@@ -12,14 +12,14 @@
     <script type="module" src="./firebase-config.js"></script>
     <!-- Nutrition Data -->
     <script type="module">
-        import { fetchAllsnacks, renderItemGrid } from './nutrition.js';
+        import { fetchAllprotein, renderItemGrid } from './shop.js';
         document.addEventListener("DOMContentLoaded", () => {
-            fetchAllsnacks()
+            fetchAllprotein()
                 .then(items => {
                     renderItemGrid(items);
                 })
                 .catch(error => {
-                    console.error('Error fetching snacks data:', error);
+                    console.error('Error fetching protein data:', error);
                 });
         });
     </script>
@@ -28,12 +28,12 @@
     <!-- Header and Navigation -->
     <header>
       <nav class="navbar">
-        <div class="logo"><a href="../site.html">SPORTIFY</a></div>
+        <div class="logo"><a href="site.html">SPORTIFY</a></div>
         <button class="nav-toggle" onclick="toggleMenu()">☰</button>
         <ul class="nav-links">
           <li><a href="../training/training.html">Training</a></li>
-          <li><a href="nutrition.html">Nutrition</a></li>
-          <li><a href="../shop/shop.html">Shop</a></li>
+          <li><a href="../nutrition/nutrition.html">Nutrition</a></li>
+          <li><a href="shop.html">Shop</a></li>
         </ul>
         <button class="login-btn"><a href="logIn.html">Login <span class="arrow">&rarr;</span> </a> </button>
       </nav>
@@ -41,10 +41,10 @@
 
     <!-- Main Content -->
     <main>
-        <h2 class="titre">Healthy Snacks</h2>
+        <h2 class="titre">Nutrition</h2>
         <!-- Menu Grid -->
         <div class="menu-container" id="menu-container">
-            <!-- Dynamic content from fetchAllsnacks will populate here -->
+            <!-- Dynamic content from fetchAllBreakfasts will populate here -->
         </div>
     </main>
 
