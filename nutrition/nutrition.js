@@ -1,4 +1,4 @@
-import { db } from './firebase-config.js';
+import { db } from '../firebase-config.js';
 import { doc, getDoc, getDocs, collection } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js';
 
 const FALLBACK_IMAGE = 'images/default-image.jpg'; // Replace with a default image path
@@ -43,13 +43,26 @@ export async function fetchAllDinner() {
         return [];
     }
 }
+// Fetch all snacks documents
+export async function fetchAllsnacks() {
+    console.log("Fetching all snacks documents...");
+    try {
+        const querySnapshot = await getDocs(collection(db, "snacks"));
+        const items = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        console.log("Fetched snacks items:", items);
+        return items;
+    } catch (error) {
+        console.error("Error fetching snacks collection:", error);
+        return [];
+    }
+}
 
 // Generate item HTML structure
 function generateItemHTML(item) {
-    const imageUrl = item.image ? `images/${item.image}` : FALLBACK_IMAGE;
+    //const imageUrl = item.image ? item.image : FALLBACK_IMAGE;
     return `
        <div class="menu-item">
-            <img src="${imageUrl}" alt="${item.name || 'Food Item'}" onerror="this.src='${FALLBACK_IMAGE}'">
+            <img src="${item.image}" alt="${item.name || 'Food Item'}" onerror="this.src='${FALLBACK_IMAGE}'">
             <h3>${item.name || 'Unnamed Item'}</h3>
             <p>${item.description || 'No description available.'}</p>
             <div class="calcook">
