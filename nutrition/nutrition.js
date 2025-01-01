@@ -67,7 +67,7 @@ function generateItemHTML(item) {
             <p>${item.description || 'No description available.'}</p>
             <div class="calcook">
                 <p class="calories">${item.kcal || 'N/A'} kcal</p>
-                <button>HOW TO COOK</button>
+                <button onclick="window.location.href='${item.video}';">HOW TO COOK</button>
             </div>
        </div>
     `;

@@ -44,6 +44,18 @@ export async function fetchAllAccesories() {
         return [];
     }
 }
+export async function fetchAllWear() {
+    console.log("Fetching all protein documents...");
+    try {
+        const querySnapshot = await getDocs(collection(db, "wear"));
+        const items = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        console.log("Fetched equiments items:", items);
+        return items;
+    } catch (error) {
+        console.error("Error fetching protein collection:", error);
+        return [];
+    }
+}
 
 
 

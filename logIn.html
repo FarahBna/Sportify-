@@ -11,7 +11,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics-compat.js"></script>
-
+  
     <script>
       // Firebase configuration
       const firebaseConfig = {
@@ -57,24 +57,27 @@
         const password = document.getElementById("password").value;
 
         auth.signInWithEmailAndPassword(email, password)
-          .then((userCredential) => {
-            alert("Login successful!");
-            window.location.href = "site.html"; // Redirect to home page
-          })
-          .catch((error) => {
-            let errorMessage;
-            switch (error.code) {
-              case "auth/user-not-found":
-                errorMessage = "No account found with this email.";
-                break;
-              case "auth/wrong-password":
-                errorMessage = "Incorrect password. Please try again.";
-                break;
-              default:
-                errorMessage = "Login failed. Please check your details and try again.";
-            }
-            alert(errorMessage);
-          });
+  .then((userCredential) => {
+    // Stockez l'utilisateur dans localStorage
+    localStorage.setItem("user", userCredential.user.email); // Vous pouvez stocker un token ou une info spécifique
+    alert("Login successful!");
+    window.location.href = "site.html"; // Redirection vers la page d'accueil
+  })
+  .catch((error) => {
+    let errorMessage;
+    switch (error.code) {
+      case "auth/user-not-found":
+        errorMessage = "No account found with this email.";
+        break;
+      case "auth/wrong-password":
+        errorMessage = "Incorrect password. Please try again.";
+        break;
+      default:
+        errorMessage = "Login failed. Please check your details and try again.";
+    }
+    alert(errorMessage);
+  });
+
       });
       // Forgot Password
 document.getElementById("forgot-password").addEventListener("click", () => {
@@ -93,5 +96,7 @@ document.getElementById("forgot-password").addEventListener("click", () => {
 });
 
     </script>
+
+   
 </body>
 </html>
