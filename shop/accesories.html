@@ -105,5 +105,233 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const loginButton = document.querySelector(".login-btn");
+      
+          // Vérifiez si l'utilisateur est connecté
+          const user = localStorage.getItem("user");
+      
+          if (user) {
+            // Remplacez le bouton Login par Logout
+            loginButton.innerHTML = `<span>Logout</span>`;
+            loginButton.addEventListener("click", () => {
+              // Déconnexion
+              localStorage.removeItem("user"); // Supprimez l'état de connexion
+              alert("You have been logged out.");
+              location.reload(); // Rechargez la page
+            });
+          }
+        });
+      </script>
+      <div id="purchaseModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Purchase Details</h2>
+            <form id="purchaseForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Shipping Address</label>
+                    <textarea id="address" name="address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="cardNumber">Card Number</label>
+                    <input type="text" id="cardNumber" name="cardNumber" required pattern="[0-9]{16}" placeholder="1234567890123456">
+                </div>
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label for="expiry">Expiry Date</label>
+                        <input type="text" id="expiry" name="expiry" required placeholder="MM/YY">
+                    </div>
+                    <div class="form-group half">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" name="cvv" required pattern="[0-9]{3}" placeholder="123">
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Confirm Purchase</button>
+            </form>
+        </div>
+    </div>
+    
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <h2>Transaction Validated!</h2>
+            <p>Thank you for your purchase. You will receive a confirmation email shortly.</p>
+            <button class="ok-btn">OK</button>
+        </div>
+    </div>
+    <style>
+      .modal {
+    color: #00aaff;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    /* Center positioning */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Optional: Add max-height and scrolling for smaller screens */
+    max-height: 90vh;
+    overflow-y: auto;
+}
+        
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-group.half {
+            flex: 1;
+        }
+        
+        .submit-btn,
+        .ok-btn {
+            background-color: #00aaff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        
+        .submit-btn:hover,
+        .ok-btn:hover {
+            background-color: #45a049;
+        }
+        </style>
+<script>
+    // Function to update the generateItemHTML to include data attributes
+    function generateItemHTML(item) {
+        const imageUrl = item.image ? `${item.image}` : FALLBACK_IMAGE;
+        return `
+            <div class="shop-item">
+                <img src="${imageUrl}" alt="${item.name || 'Shop Item'}" onerror="this.src='${FALLBACK_IMAGE}'">
+                <h3>${item.name || 'Unnamed Item'}</h3>
+                <p>${item.description || 'No description available.'}</p>
+                <div class="prix">${item.prix || 'N/A'} DT</div>
+                <a href="#" class="add-to-cart" data-item-name="${item.name}" data-item-price="${item.prix}">buy now</a>
+            </div>
+        `;
+    }
+    
+    // Add this to your existing JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+        const purchaseModal = document.getElementById('purchaseModal');
+        const confirmationModal = document.getElementById('confirmationModal');
+        const closeBtn = document.querySelector('.close');
+        const okBtn = document.querySelector('.ok-btn');
+        let currentItem = null;
+    
+        // Event delegation for buy now buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('add-to-cart')) {
+                e.preventDefault();
+                currentItem = {
+                    name: e.target.dataset.itemName,
+                    price: e.target.dataset.itemPrice
+                };
+                purchaseModal.style.display = 'block';
+            }
+        });
+    
+        // Close modal when clicking on X
+        closeBtn.onclick = function() {
+            purchaseModal.style.display = 'none';
+        }
+    
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == purchaseModal) {
+                purchaseModal.style.display = 'none';
+            }
+            if (event.target == confirmationModal) {
+                confirmationModal.style.display = 'none';
+            }
+        }
+    
+        // Form submission
+        document.getElementById('purchaseForm').onsubmit = function(e) {
+            e.preventDefault();
+            purchaseModal.style.display = 'none';
+            confirmationModal.style.display = 'block';
+            this.reset(); // Reset form fields
+        }
+    
+        // OK button in confirmation
+        okBtn.onclick = function() {
+            confirmationModal.style.display = 'none';
+        }
+    
+        // Card number formatting
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '').slice(0, 16);
+        });
+    
+        // Expiry date formatting
+        document.getElementById('expiry').addEventListener('input', function(e) {
+            let value = this.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.slice(0,2) + '/' + value.slice(2,4);
+            }
+            this.value = value;
+        });
+    
+        // CVV formatting
+        document.getElementById('cvv').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '').slice(0, 3);
+        });
+    });
+    </script>      
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -762,7 +763,7 @@ main h2 {
 .ShopSec {
   height: 100vh;
   /* La section occupe toute la hauteur de la fenêtre */
-  background: url('images/shop1.jpg') no-repeat center center/cover;
+  background: url('../images/shop1.jpg') no-repeat center center/cover;
   display: flex;
   justify-content: center;
   align-items: center;

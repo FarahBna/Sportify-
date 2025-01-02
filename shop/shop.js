@@ -44,6 +44,18 @@ export async function fetchAllAccesories() {
         return [];
     }
 }
+export async function fetchAllWear() {
+    console.log("Fetching all protein documents...");
+    try {
+        const querySnapshot = await getDocs(collection(db, "wear"));
+        const items = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        console.log("Fetched equiments items:", items);
+        return items;
+    } catch (error) {
+        console.error("Error fetching protein collection:", error);
+        return [];
+    }
+}
 
 
 
@@ -57,7 +69,7 @@ function generateItemHTML(item) {
     <h3>${item.name || 'Unnamed Item'}</h3>
     <p>${item.description || 'No description available.'}</p>
     <div class="prix">${item.prix || 'N/A'} DT</div>
-    <a href="#" class="add-to-cart">Ajouter au panier</a>
+    <a href="#" class="add-to-cart">buy now</a>
     </div>
 `;
 }
