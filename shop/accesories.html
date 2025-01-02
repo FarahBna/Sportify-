@@ -109,17 +109,17 @@
         document.addEventListener("DOMContentLoaded", () => {
           const loginButton = document.querySelector(".login-btn");
       
-          // Vérifiez si l'utilisateur est connecté
+        
           const user = localStorage.getItem("user");
       
           if (user) {
-            // Remplacez le bouton Login par Logout
+         
             loginButton.innerHTML = `<span>Logout</span>`;
             loginButton.addEventListener("click", () => {
-              // Déconnexion
-              localStorage.removeItem("user"); // Supprimez l'état de connexion
+           
+              localStorage.removeItem("user"); 
               alert("You have been logged out.");
-              location.reload(); // Rechargez la page
+              location.reload(); 
             });
           }
         });
@@ -251,7 +251,7 @@
         }
         </style>
 <script>
-    // Function to update the generateItemHTML to include data attributes
+ 
     function generateItemHTML(item) {
         const imageUrl = item.image ? `${item.image}` : FALLBACK_IMAGE;
         return `
@@ -265,7 +265,7 @@
         `;
     }
     
-    // Add this to your existing JavaScript
+ 
     document.addEventListener('DOMContentLoaded', function() {
         const purchaseModal = document.getElementById('purchaseModal');
         const confirmationModal = document.getElementById('confirmationModal');
@@ -273,7 +273,7 @@
         const okBtn = document.querySelector('.ok-btn');
         let currentItem = null;
     
-        // Event delegation for buy now buttons
+       
         document.addEventListener('click', function(e) {
             if (e.target.classList.contains('add-to-cart')) {
                 e.preventDefault();
@@ -285,12 +285,12 @@
             }
         });
     
-        // Close modal when clicking on X
+       
         closeBtn.onclick = function() {
             purchaseModal.style.display = 'none';
         }
     
-        // Close modal when clicking outside
+       
         window.onclick = function(event) {
             if (event.target == purchaseModal) {
                 purchaseModal.style.display = 'none';
@@ -300,25 +300,25 @@
             }
         }
     
-        // Form submission
+    
         document.getElementById('purchaseForm').onsubmit = function(e) {
             e.preventDefault();
             purchaseModal.style.display = 'none';
             confirmationModal.style.display = 'block';
-            this.reset(); // Reset form fields
+            this.reset(); 
         }
     
-        // OK button in confirmation
+    
         okBtn.onclick = function() {
             confirmationModal.style.display = 'none';
         }
     
-        // Card number formatting
+  
         document.getElementById('cardNumber').addEventListener('input', function(e) {
             this.value = this.value.replace(/\D/g, '').slice(0, 16);
         });
     
-        // Expiry date formatting
+      
         document.getElementById('expiry').addEventListener('input', function(e) {
             let value = this.value.replace(/\D/g, '');
             if (value.length >= 2) {
@@ -327,7 +327,7 @@
             this.value = value;
         });
     
-        // CVV formatting
+    
         document.getElementById('cvv').addEventListener('input', function(e) {
             this.value = this.value.replace(/\D/g, '').slice(0, 3);
         });

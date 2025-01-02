@@ -1,9 +1,9 @@
 import { db } from '../firebase-config.js';
 import { doc, getDoc, getDocs, collection } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js';
 
-const FALLBACK_IMAGE = 'images/default-image.jpg'; // Replace with a default image path
+const FALLBACK_IMAGE = 'images/default-image.jpg'; 
 
-// Fetch all breakfast documents
+
 export async function fetchAllBreakfasts() {
     console.log("Fetching all breakfast documents...");
     try {
@@ -17,7 +17,7 @@ export async function fetchAllBreakfasts() {
     }
 }
 
-// Fetch all lunch documents
+
 export async function fetchAllLunch() {
     console.log("Fetching all lunch documents...");
     try {
@@ -30,7 +30,7 @@ export async function fetchAllLunch() {
         return [];
     }
 }
-// Fetch all dinner documents
+
 export async function fetchAllDinner() {
     console.log("Fetching all dinner documents...");
     try {
@@ -43,7 +43,7 @@ export async function fetchAllDinner() {
         return [];
     }
 }
-// Fetch all snacks documents
+
 export async function fetchAllsnacks() {
     console.log("Fetching all snacks documents...");
     try {
@@ -57,10 +57,9 @@ export async function fetchAllsnacks() {
     }
 }
 
-// Generate item HTML structure
+
 function generateItemHTML(item) {
-    //const imageUrl = item.image ? item.image : FALLBACK_IMAGE;
-    return `
+  return `
        <div class="menu-item">
             <img src="${item.image}" alt="${item.name || 'Food Item'}" onerror="this.src='${FALLBACK_IMAGE}'">
             <h3>${item.name || 'Unnamed Item'}</h3>
@@ -73,7 +72,7 @@ function generateItemHTML(item) {
     `;
 }
 
-// Render the items in the grid container
+
 export async function renderItemGrid(items) {
     const itemGrid = document.getElementById("menu-container");
     if (!itemGrid) {
@@ -83,14 +82,13 @@ export async function renderItemGrid(items) {
 
     console.log("Rendering items to the grid...", items);
 
-    // Clear previous content
+ 
     itemGrid.innerHTML = '';
 
-    // Accumulate all HTML before rendering
+   
     const html = items.map(item => generateItemHTML(item)).join('');
     itemGrid.innerHTML = html;
 }
 
-// Example usage: Uncomment these for testing
-// fetchAllBreakfasts().then(renderItemGrid);
-// fetchAllLunch().then(renderItemGrid);
+
+
