@@ -97,5 +97,24 @@
       </div>
     </div>
   </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const loginButton = document.querySelector(".login-btn");
+  
+      // Vérifiez si l'utilisateur est connecté
+      const user = localStorage.getItem("user");
+  
+      if (user) {
+        // Remplacez le bouton Login par Logout
+        loginButton.innerHTML = `<span>Logout</span>`;
+        loginButton.addEventListener("click", () => {
+          // Déconnexion
+          localStorage.removeItem("user"); // Supprimez l'état de connexion
+          alert("You have been logged out.");
+          location.reload(); // Rechargez la page
+        });
+      }
+    });
+  </script>
 </body>
 </html>
